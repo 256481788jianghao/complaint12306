@@ -28,4 +28,18 @@ class emailTool:
 
     def sendDelay(self,dtime):
         time.sleep(dtime)
-        self.send() 
+        self.send()
+    
+
+    def sendcyc(self, pro_time, pro_num):
+        pro_time = pro_time
+        pro_cnt = 0
+        while pro_cnt < pro_num:
+            send_num = pro_cnt + 1
+            sleeptime = int(pro_time/send_num)
+            while send_num > 0:
+                #print("pro_cnt="+str(pro_cnt)+" at "+str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+                #time.sleep(sleeptime)
+                self.sendDelay(sleeptime)
+                send_num -= 1
+            pro_cnt +=1
