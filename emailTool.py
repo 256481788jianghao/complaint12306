@@ -2,6 +2,8 @@
 import smtplib
 import email.mime.multipart  
 import email.mime.text
+import time
+import datetime
 
 
 class emailTool:
@@ -21,4 +23,9 @@ class emailTool:
         txt=email.mime.text.MIMEText(content)  
         msg.attach(txt)  
         smtp.sendmail(self.config['From'],self.config['To'],str(msg))  
-        smtp.quit()  
+        smtp.quit()
+        print("send mail at "+str(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))) 
+
+    def sendDelay(self,dtime):
+        time.sleep(dtime)
+        self.send() 
